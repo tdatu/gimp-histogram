@@ -28,9 +28,9 @@ def find_image_type(file):
     if(file[-3:].endswith("png")):
         fn = pdb.file_png_load
     elif(file[-3:].endswith("jpg")):
-        fn = pdb.file_png_load
+        fn = pdb.file_jpg_load
     elif(file[-3:].endswith("bmp")):
-        fn = pdb.file_png_load
+        fn = pdb.file_bmp_load
 
     return fn
 
