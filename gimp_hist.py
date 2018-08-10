@@ -24,13 +24,24 @@ def select_region(img, x, y, w, h):
 
 
 def find_image_type(file):
-#    fn = None
-#    fn = file[-3:].endswith("png") if pdb.file_png_load else None
-#    fn = file[-3:].endswith("jpg") and fn != None if pdb.file_png_load else None
-#    fn = file[-3:].endswith("bmp") and fn != None if pdb.file_png_load else None
-    return pdb.file_png_load
+    fn = None
+    if(file[-3:].endswith("png")):
+        fn = pdb.file_png_load
+    elif(file[-3:].endswith("jpg")):
+        fn = pdb.file_png_load
+    elif(file[-3:].endswith("bmp")):
+        fn = pdb.file_png_load
+
+    return fn
 
 if __name__ == "__main__":
-    filename = "antartica.png"
-    intensity = calculate_histogram(filename)
-    print(intensity)
+    
+    for filename in os.listdir(os.getcwd()):
+        try:
+            (f,ext) = filename.split(".")
+            if ext in ["jpg", "png", "bmp"]:
+                intensity = calculate_histogram(filename)
+                print(intensity)
+        except:
+            print("error: ", filename)
+            pass
